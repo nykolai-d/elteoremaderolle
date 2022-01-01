@@ -1,0 +1,248 @@
+\documentclass[letter]{article}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{biblatex}
+\usepackage[autostyle]{csquotes}
+\addbibresource{sample.bib}
+
+
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subfigure}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\title{El Teorema de Rolle}
+\author{Nicolás Díaz D.}
+\date{Noviembre de 2021}
+
+\begin{document}
+\maketitle
+\section{Introducción}
+\paragraph{}El teorema de Rolle fue planteado por primera vez en 1150 d.C. por el matemático indio Bhaskara II y demostrado por el matemático francés Michel Rolle en 1691 [5]. En 1834, el italiano Giusto Bellavitis y el alemán Moritz Wilhem Dobisch fueron los primeros en referirse al teorema como "teorema de Rolle". Hoy en día, es el fundamento de muchos teoremas de cálculo diferencial e integral, lo cual es irónico, pues Rolle era un crítico asiduo del cálculo infinitesimal.
+\paragraph{}En general, el teorema de Rolle afirma que  si existen dos valores iguales en dos posiciones diferentes de una función diferenciable, entonces la función debe contener al menos un punto fijo en medio de dichos valores. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Definición}
+\paragraph{}El teorema de Rolle es un caso particular del teorema del valor medio (TVM), también conocido como el teorema del valor medio de Lagrange, el cual está definido así:
+\paragraph{}\textbf{Teorema del valor medio: }Sea $f:[a,b]\longrightarrow\mathbb{R}$ una función continua en un intervalo cerrado $[a,b]$ y diferenciable en el intervalo abierto $(a,b)$. Entonces existe un punto $c$ tal que $a<c<b$ y
+$$f'(c)=\frac{f(b)-f(a)}{b-a}$$
+\paragraph{}Informalmente, el TVM nos dice que la derivada de una función continua y derivable debe tomar en algún punto el valor del promedio de su razón de cambio en un intervalo dado [1]. Por ejemplo, si una moto viaja $100$ kilómetros en dos horas, entonces debe alcanzar la velocidad exacta de $50$ Km/hora en algún punto exacto del tiempo.
+\paragraph{}Gráficamente, el TVM se ve así:
+\begin{center}
+    \includegraphics[width=.6\textwidth]{1.png}
+\end{center}
+\paragraph{}El teorema de Rolle, por su parte, está definido así:
+\paragraph{}\textbf{Teorema de Rolle: }Sea $f:[a,b]\longrightarrow\mathbb{R}$ una función continua en un intervalo cerrado $[a,b]$, diferenciable en el intervalo abierto $(a,b)$ y con $f(a)=f(b)$. Entonces existe al menos un punto $(c,f(c))\in(a,b)$ tal que $$f'(c)=0$$
+\paragraph{}Se aprecia inmediatamente que es un caso particular del TVM. Veámoslo gráficamente:
+\begin{center}
+    \includegraphics[width=.5\textwidth]{2.png}
+\end{center}
+\paragraph{}Observamos que, siempre que se cumpla que $f(a)=f(b)$ y que $f$ sea diferenciable en $(a,b)$, podemos definir dos puntos cualesquiera $(a,f(a))$ y $(b,f(b))$. Entonces, veremos que existe un punto en el medio donde se cumple que $f'=0$. En la imagen de arriba, se aprecia que ese es el \textcolor{red}{punto rojo}. En este caso, el punto $f(c)$ es un valor máximo y la curva es cóncava.
+\begin{center}
+    \includegraphics[width=.48\textwidth]{m.png}
+    \includegraphics[width=.48\textwidth]{mM.png}
+\end{center}
+En estas dos imágenes se aprecian los otros dos casos: el primero, cuando el punto $f(c)$ es un valor máximo y la curva es cóncava; el segundo, cuando existe un valor mínimo $f(c_1)$ y un valor máximo $f(c_2)$ en el intervalo $(a,b)$. Dichos puntos son diferenciables y siempre se cumple que $f'(c)=0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Demostración teorema de Rolle}
+\paragraph{}Queremos probar que, si tenemos una función $f:[a,b]\longrightarrow\mathbb{R}$ continua en un intervalo cerrado $[a,b]$, diferenciable en el intervalo abierto $(a,b)$ y con $f(a)=f(b)$, entonces existe al menos un punto $(c,f(c))\in(a,b)$ tal que $f'(c)=0$.
+\begin{enumerate}
+    \item \textit{Caso 1:} %%% Es constante
+    \vspace{2mm}\\
+    $f(x)$ es una función constante. \vspace{2mm}\\
+    Este es el caso trivial. Si $f(x)$ es una función constante, entonces $f'(x)=0$ a lo largo de todo el intervalo. De aquí se sigue que existe un $c\in(a,b)$ tal que $f'(x)=0$.
+    \newpage
+    \item \textit{Caso 2: }
+    \vspace{2mm}
+    \\
+    $f(x)$ no es una función constante.
+    \vspace{2mm}\\
+    Si $f(x)$ no es una función constante pero es continua en el intervalo $[a,b]$, por el teorema del valor extremo,\footnote{Véase la demostración a este teorema en el apéndice de este trabajo.} la función $f(x)$ alcanza un valor máximo y un valor mínimo en el intervalo $[a,b]$. Como $f(x)$ no es una función constante, entonces al menos uno de sus extremos debe existir en el intervalo $(a,b)$.
+    \begin{enumerate}
+        \item %%% No constante caso 1
+        Si $f(x)$ alcanza su valor máximo $f(c)$ en $x=c\in(a,b)$, entonces existe un $h\in\mathbb{R}$ tal que su valor absoluto es lo suficientemente pequeño para que se cumpla que $a<c+h<b$. Entonces,
+        $$f(c+h)-f(c)\le0$$
+        De aquí se sigue que
+        $$\lim_{h\rightarrow0^{-}}\frac{f(c+h)-f(c)}{h}\ge0,\qquad\lim_{h\rightarrow0^{+}}\frac{f(c+h)-f(c)}{h}\le0$$
+        Dado que $f(x)$ es diferenciable en el intervalo $(a,b)$, por el teorema del sándwich tenemos:
+        \begin{equation*}
+            \begin{split}
+                0\le\lim_{h\rightarrow0^{-}}\frac{f(c+h)-f(c)}{h}
+                &= \lim_{h\rightarrow0^{+}}\frac{f(c+h)-f(c)}{h}\le0\\
+                \Rightarrow f'(c)
+                &= \lim_{h\rightarrow0}\frac{f(c+h)-f(c)}{h}\\
+                &= 0
+            \end{split}
+        \end{equation*}
+        \item %%% No constante caso 2
+        Si $f(x)$ alcanza su valor minimo $f(c)$ en $x=c\in(a,b)$, entonces existe un $h\in\mathbb{R}$ tal que su valor absoluto es lo suficientemente pequeño para que se cumpla que $a<c+h<b$. Entonces,
+        $$f(c+h)-f(c)\ge0$$
+        De aquí se sigue que
+        $$\lim_{h\rightarrow0^{-}}\frac{f(c+h)-f(c)}{h}\le0,\qquad\lim_{h\rightarrow0^{+}}\frac{f(c+h)-f(c)}{h}\ge0$$
+        Dado que $f(x)$ es diferenciable en el intervalo $(a,b)$, por el teorema del sándwich tenemos:
+        \begin{equation*}
+            \begin{split}
+                0\le\lim_{h\rightarrow0^{+}}\frac{f(c+h)-f(c)}{h}
+                &= \lim_{h\rightarrow0^{-}}\frac{f(c+h)-f(c)}{h}\le0\\
+                \Rightarrow f'(c)
+                &= \lim_{h\rightarrow0}\frac{f(c+h)-f(c)}{h}\\
+                &= 0
+            \end{split}
+        \end{equation*}
+    \end{enumerate}
+    \paragraph{} Hemos demostrado que, para cualquier caso, existe un punto $c\in(a,b)$ en donde $f'(c)=0$.
+    \paragraph{}\textit{Observación}: Para que el teorema de Rolle se sostenga, la función debe ser diferenciable en el intervalo considerado. Es decir, no aplicaría, por ejemplo, en funciones de tipo $f(x)=|x|$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Demostración teorema del valor medio}
+\paragraph{}Queremos probar que si tenemos una función $f$ definida como $f:[a,b]\longrightarrow\mathbb{R}$, continua en un intervalo cerrado $[a,b]$ y diferenciable en el intervalo abierto $(a,b)$, entonces existe un punto $c$ tal que $a<c<b$ y
+$$f'(c)=\frac{f(b)-f(a)}{b-a}$$
+
+Para demostrarlo, buscaremos transformar el teorema del valor medio en forma del teorema de Rolle. Para tal, fin se toma la funcion orginal $f$ y se resta la función lineal que conecta $a$ con $b$, de tal forma que $f(a)=f(b)=0$, y con esto el teorema queda en la forma del Teorema de Rolle.
+
+\begin{center}
+    \includegraphics[width=.7\textwidth]{TLC.png}
+\end{center}
+
+\subsection{Demostración:}
+
+Sea $s(x)$ la ecuación de la linea que conecta $a$ con $b$ dada por:
+\begin{equation*}
+            s(x)=\left(\frac{f(b)-f(a)}{b-a}\right)(x-a)+f(a)
+\end{equation*}
+Consideremos ahora la ecuacion $g(x)=f(x)-s(x)$:
+\begin{equation*}
+            g(x)=f(x)-\left[\left(\frac{f(b)-f(a)}{b-a}\right)(x-a)+f(a)\right]
+\end{equation*}
+Observemos que $g(a)=g(b)=0$, que es lo que queríamos:
+\begin{equation*}
+    \begin{split}
+        g(a)=f(a)-\left[\left(\frac{f(b)-f(a)}{b-a}\right)(a-a)+f(a)\right]=f(a)-f(a)=0 \\
+        g(a)=f(b)-\left[\left(\frac{f(b)-f(a)}{b-a}\right)(b-a)+f(a)\right]=f(b)-\left[f(b)-f(a)+f(a)\right]=0
+    \end{split}
+\end{equation*}
+Dado que $g(x)$ cumple los supuestos del teorema de Rolle, es decir: es una funcion $[a,b]\rightarrow \mathbb{R}$, es continua, y $g(a)=g(b)$, entonces $\exists c\in (a,b)$ tal que $g'(c)=0$.
+\vspace{2mm}\\
+Dado que $g(x)=f(x)-s(x)$, tenemos que $g'(x)=f'(x)-s'(x)$, en particular $g'(c)=f'(c)-s'(c)=0$, por lo que $f'(c)=s'(c)$.
+\vspace{2mm}\\
+Dado que la pendiente de $s(x)$ es precisamente su derivada, tenemos que $s'(x)=\frac{f(b)-f(a)}{b-a}$.
+\vspace{2mm}\\
+Finalmente tenemos que en $c$:
+\begin{equation*}
+            f'(c)=s'(c)=\frac{f(b)-f(a)}{b-a}
+\end{equation*}
+que es precisamente el punto que estabamos buscando.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ejemplos}
+\begin{enumerate}
+
+    \item %%% Ejemplo 1
+    
+    Consideremos la función 
+    $$f(x)=x^{2}-2x+1$$
+    Mostraremos que $f'(x)=0$ tiene al menos una raíz en el intervalo $0<x<2$ utilizando el teorema de Rolle.
+    \begin{enumerate}
+        \item Observemos que $f(x)=x^{2}-2x+1$ es continua en el intervalo $[0,2]$ y diferenciable en $(0,2)$. 
+        \item Los valores que toma $f(x)$ cuando $x=0$ y $x=2$ son:
+    \begin{equation*}
+        \begin{split}
+            f(0) &= 1\\
+            f(2) &= 2^{2}-2(2)+1\\
+            &= 1\\
+            \Rightarrow f(0) &= f(2) = 1
+        \end{split}
+    \end{equation*}
+    \end{enumerate}
+    De (a) y (b) podemos concluir que el teorema de Rolle aplica. De acuerdo al teorema, existe un punto en el que se cumple que $f'(x)=0$ en el intervalo $(0,2)$
+    
+    \item %%% Ejemplo 2 
+    
+    Consideremos la siguiente ecuación:
+    $$\text{tan}(x)+x-1=0$$
+    Mostraremos que esta expresión tiene al menos una raíz en el intervalo $0<x<1$.
+    \begin{enumerate}
+        \item Consideremos cos$(x)$, el cual nunca será igual a $0$ en el intervalo dado. Podemos reescribir la ecuación inicial como
+        \begin{equation*}
+            \begin{split}
+                \text{tan}(x)+x-1 
+                &= 0\\
+                \frac{\text{sin}(x)}{\text{cos}(x)}+x-1 
+                &= 1\\
+                \text{sin}(x)+(x-1)\text{cos}(x)
+                &= 0
+            \end{split}
+        \end{equation*}
+        \item Sea $f'(x)=\text{sin}(x)+(x-1)\text{cos}(x)$. Entonces
+        \begin{equation*}
+            \begin{split}
+                f(x) 
+                &= \int f'(x)dx\\
+                &= \int\text{sin}(x)+(x-1)\text{cos}(x)dx\\
+                &= (x-1)\text{sin}(x)+C\\
+                \Rightarrow f(0) 
+                &= C\\
+                f(1)
+                &= C,
+            \end{split}
+        \end{equation*}
+        con $C$ constante de integración. Dado que $f(x)$ es continuo en el intervalo $[0,1]$ y es diferenciable en el intervalo $(0,1)$, y $f(0)=f(1)=C$, entonces el teorema de Rolle aplica. De acuerdo a este teorema, existe un punto en el que $f'(x)=0$ en el intervalo $(0,1)$
+    \end{enumerate}
+    
+    \item %%% Ejemplo 3
+    Consideremos el siguiente polinomio: 
+    $$4x^{3}+3x^{2}+2x-3=0$$
+    Mostraremos que tiene al menos una raíz en el intervalo $0<x<1$
+    \vspace{2mm}\\
+    Sea $f'(x)=4x^{3}+3x^{2}+2x-3$. Entonces
+    \begin{equation*}
+        \begin{split}
+            f(x) 
+            &= x^{4}+x^{3}+x^{2}-3x+C\\
+            \Rightarrow f(0)
+            &= C\\
+            f(1)
+            &= 1+1+1-3+C=C
+        \end{split}
+    \end{equation*}
+    con $C$ constante de integración. Dado que $f(x)$ es continua en el intervalo $[0,1]$ y es diferenciable en el intervalo $(0,1)$, y $f(0)=f(1)=C$, podemos aplicar el teorema de Rolle. De acuerdo a este teorema, existe un punto en el que $f'(x)=0$ en el intervalo $(0,1)$
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{thebibliography}{0}
+
+  \bibitem{}Brilliant.org. Mean Value Theorem. Tomado de https://brilliant.org/wiki/mean-value-theorem/ en noviembre de 2021.
+  \bibitem{}MathWorld.Wolfram. Extreme Value Theorem. Tomado de https://mathworld.wolfram.com/ExtremeValueTheorem.html en noviembre de 2021.
+  \bibitem{}Rudin, W. (1964). Principles of mathematical analysis (Vol. 3). New York: McGraw-hill.
+  \bibitem{}The Department of Mathematics and Computer Science, Emory Oxford College. Proof to the Mean Value Theorem. Tomado de http://math.oxford.emory.edu/site/math111/proofs/meanValueTheorem/ en noviembre de 2021.
+  \bibitem{}Wolfram Alpha. Rolle's Theorem (Mathematical Problem). Tomado de https://www.wolframalpha.com/input/?i=rolle\%27s+theorem en noviembre de 2021.
+  
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Apéndice}
+
+\textbf{Teorema del valor extermo}[ref]: Sea $f(x)$ una función continua en el intervalo $[a,b]$, con $a,b\in\mathbb{R}$ y $a<b$. Entonces $f(x)$ alcanza un máximo y un mínimo en el intervalo $[a,b]$.
+\vspace{4mm}\\
+\textbf{Demostración}
+\paragraph{} Sea $f:[a,b]\longrightarrow\mathbb{R}$. Queremos probar que $f$ alcanza un valor máximo en el intervalo $[a,b]$, con $a,b\in\mathbb{R}$ y $a<b$.
+\paragraph{}Procederemos por contradicción. Supongamos que $f$ no alcanza un valor máximo en un conjunto compacto. Como la función es acotada, entonces existe al menos una cota superior $M$ tal que $M\in\text{Rango}(f)$. Consideremos la función $g(x)=1/(f-M)$. Como $f$ nunca alcanza un máximo, entonces la función $g$ es continua y, por lo tanto, también es acotada. 
+\paragraph{}Esto implica que $f$ no se acerca arbitrariamente a $M$. Pero $M$ fue definida como la mínima cota superior del rango de $f$. $\longrightarrow\longleftarrow$
+\paragraph{}Análogamente, podemos probar que $f$ alcanza un valor mínimo en en el intervalo $[a,b]$
+
+\end{document}    
+
