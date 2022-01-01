@@ -1,0 +1,4 @@
+# elteoremaderolle
+El teorema de Rolle fue planteado por primera vez en 1150 d.C. por el matemático indio BhaskaraII y demostrado por el matemático francés Michel Rolle en 1691. En 1834, el italiano Giusto Bellavitis y el alemán Moritz Wilhem Dobisch fueron los primeros en referirse al teorema como "teorema de Rolle". Hoy en día, es el fundamento de muchos teoremas de cálculo diferencial e integral, lo cual es irónico, pues Rolle era un crítico asiduo del cálculo infinitesimal. 
+<br/><br/>
+En general, el teorema de Rolle afirma que si existen dos valores iguales en dos posiciones diferentes de una función diferenciable, entonces la función debe contener al menos un punto fijo en medio de dichos valores. Este trabajo explica la deducción matemática del teorema, expone su demostración y da algunos ejemplos de su aplicación.
